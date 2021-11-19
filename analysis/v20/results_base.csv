@@ -1,0 +1,10 @@
+,swa Evaled on,ibo Evaled on,yor Evaled on,kin Evaled on,wol Evaled on,hau Evaled on,luo Evaled on,lug Evaled on,pcm Evaled on
+wol (NER finetune lang),45.67,51.77,41.38,52.47,64.22,50.42,35.47,47.02,50.75
+luo (NER finetune lang),40.9,42.24,41.1,41.43,37.5,38.48,74.5,50.95,41.74
+lug (NER finetune lang),59.89,53.53,46.65,55.06,37.96,60.89,40.12,80.17,58.49
+kin (NER finetune lang),67.36,52.05,49.79,73.72,43.65,62.92,38.53,58.94,67.32
+ibo (NER finetune lang),63.52,84.85,53.58,50.49,43.85,61.36,38.28,53.97,65.97
+pcm (NER finetune lang),72.37,44.15,32.52,43.04,25.23,67.12,31.42,45.66,87.34
+yor (NER finetune lang),59.96,53.2,77.85,54.5,42.17,62.33,36.68,53.76,63.14
+swa (NER finetune lang),87.76,50.97,50.34,57.91,38.82,76.31,36.25,53.67,70.48
+hau (NER finetune lang),76.34,53.81,52.7,57.57,40.65,89.45,38.36,56.6,68.77

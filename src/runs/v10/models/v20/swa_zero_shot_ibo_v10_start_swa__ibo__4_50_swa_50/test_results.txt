@@ -1,0 +1,15 @@
+f1 = 0.5947136563876652
+loss = 0.42207913429133204
+precision = 0.47273636818409204
+recall = 0.8015267175572519
+report =               precision    recall  f1-score   support
+
+        DATE       0.20      0.46      0.28       162
+         LOC       0.60      0.86      0.70       463
+         ORG       0.32      0.82      0.46       221
+         PER       0.74      0.87      0.80       333
+
+   micro avg       0.47      0.80      0.59      1179
+   macro avg       0.46      0.75      0.56      1179
+weighted avg       0.53      0.80      0.63      1179
+
