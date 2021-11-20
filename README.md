@@ -10,13 +10,14 @@
 - [References / Sources / Libraries](#references--sources--libraries)
 - [Model Cards](#model-cards)
   - [About](#about-1)
+    - [Contact & More information](#contact--more-information)
+    - [Training Resources](#training-resources)
   - [Data](#data)
   - [Intended Use](#intended-use)
   - [Limitations](#limitations)
-  - [Privacy](#privacy)
-  - [Training Resources](#training-resources)
-  - [Contact](#contact)
+    - [Privacy & Ethical Considerations](#privacy--ethical-considerations)
   - [Metrics](#metrics)
+  - [Caveats and Recommendations](#caveats-and-recommendations)
   - [Model Structure](#model-structure)
   - [Usage](#usage)
 # About
@@ -139,10 +140,19 @@ Here we describe a joint model card for all of the models, as they were quite si
 These models are transformer based and were all fine-tuned on the MasakhaNER dataset. It is a named entity recognition dataset, containing mostly news articles in 10 different African languages. 
 The models were all fine-tuned for 50 epochs, with a maximum sequence length of 200, 32 batch size, 5e-5 learning rate. Each model was fine-tuned 5 times (with different random seeds), and the ones we upload are the ones that did the best for the language it was evaluated on. 
 
-These models were fine-tuned by me, Michael Beukman while doing a project at the University of the Witwatersrand, Johannesburg.
+These models were fine-tuned by me, Michael Beukman while doing a project at the University of the Witwatersrand, Johannesburg. This is version 1, as of 20 November 2021.
+These models are licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+### Contact & More information
+For more information about the models, including training scripts, detailed results and further resources, you can visit the the [main Github repository](https://github.com/Michael-Beukman/NERTransfer). You can contact me by filing an issue on this repository.
+
+### Training Resources
+In the interest of openness, and reporting resources used, we list here how long the training process took, as well as what the minimum resources would be to reproduce this. Fine-tuning each model on the NER dataset took between 10 and 30 minutes, and was performed on a NVIDIA RTX3090 GPU. To use a batch size of 32, at least 14GB of GPU memory was required, although it was just possible to fit these models in around 6.5GB's of VRAM when using a batch size of 1.
+
+
 ## Data
-The train, evaluation and test datasets were taken directly from the MasakhaNER [Github](https://github.com/masakhane-io/masakhane-ner) repository, with minimal to no preprocessing.
-The motivation for the use of this data is that it is the "first large, publicly available, high­ quality dataset for named entity recognition (NER) in ten African languages" ([source](https://arxiv.org/pdf/2103.11811.pdf)). The high-quality data, as well as the groundwork laid by the paper introducing it are some more reasons why this dataset was used. For evaluation, the dedicated test split was used, which is from the same distribution as the training data, so the models may not generalise to other distributions. The exact distribution of the data is covered in detail [here](https://arxiv.org/abs/2103.11811).
+The train, evaluation and test datasets were taken directly from the MasakhaNER [Github](https://github.com/masakhane-io/masakhane-ner) repository, with minimal to no preprocessing, as the original dataset is already of high quality.
+The motivation for the use of this data is that it is the "first large, publicly available, high­ quality dataset for named entity recognition (NER) in ten African languages" ([source](https://arxiv.org/pdf/2103.11811.pdf)). The high-quality data, as well as the groundwork laid by the paper introducing it are some more reasons why this dataset was used. For evaluation, the dedicated test split was used, which is from the same distribution as the training data, so the models may not generalise to other distributions, and further testing would need to be done to investigate this. The exact distribution of the data is covered in detail [here](https://arxiv.org/abs/2103.11811).
 
 ## Intended Use
 These models are intended to be used for NLP research into e.g. interpretability or transfer learning. Using these models in production is not supported, as generalisability and downright performance is limited. In particular, these models are not designed to be used in any important downstream task that could affect people, as harm could be caused by the limitations of the model, described next.
@@ -159,19 +169,22 @@ As [Adelani et al. (2021)](https://arxiv.org/abs/2103.11811) showed, the models 
 
 
 Additionally, these models have not been verified in practice, and other, more subtle problems may become prevalent if used without any verification that it does what it is supposed to.
-## Privacy
+
+### Privacy & Ethical Considerations
 The data comes from only publicly available news sources, the only available data should cover public figures and those that agreed to be reported on. See the original MasakhaNER paper for more details.
 
-## Training Resources
-In the interest of openness, and reporting resources used, we list here how long the training process took, as well as what the minimum resources would be to reproduce this. Fine-tuning each model on the NER dataset took between 10 and 30 minutes, and was performed on a NVIDIA RTX3090 GPU. To use a batch size of 32, at least 14GB of GPU memory was required, although it was just possible to fit these models in around 6.5GB's of VRAM when using a batch size of 1.
-## Contact
-For more information about the models, you can contact me by filing an issue on the [main Github repository](https://github.com/Michael-Beukman/NERTransfer).
+No explicit ethical considerations or adjustments were made during fine-tuning of these models.
 
 ## Metrics
 As shown in our report, and in the MasakhaNER paper, the language adaptive models achieve (mostly) superior performance over starting with xlm-roberta-base. We also demonstrated some better transfer capabilities for some of these models. Our main metric was the aggregate F1 score for all NER categories.
 
 These metrics are on the test set for MasakhaNER, so the data distribution is similar to the training set, so these results do not directly indicate how well models generalise.
-We do find large variation in results when starting from different seeds, indicating that the fine-tuning process for transfer might be unstable.
+We do find large variation in results when starting from different seeds (5 different seeds were tested), indicating that the fine-tuning process for transfer might be unstable.
+
+The metrics used were chosen to be consistent with previous work, and to facilitate research. Other metrics may be more appropriate for other purposes.
+## Caveats and Recommendations
+In general, these models performed worse on the 'date' category compared to others, so if dates are a critical factor, then that might need to be taken into account and addressed, by for example collecting and annotating more data.
+
 ## Model Structure
 Here are some details regarding the specific models, like where to find them, what the starting points where and what they were evaluated on. Evaluation here is also the same language that the model was fine-tuned on.
 All of these metrics were calculated on the test set, and the seed was chosen that gave the best overall F1 score. The first three result columns are averaged over all categories, and the latter 4 provide performance broken down by category.
