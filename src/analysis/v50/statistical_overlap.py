@@ -90,12 +90,12 @@ def statistical_overlap(mode='train'):
         dic = defaultdict(lambda: {})
         for l1 in ORDER():
             for l2 in ORDER():
-                (common, T), (common_ents, T_ents) = get_common_things_between_two_langs(l1, l2, mode=mode, entities_to_use=[e], joint_all_sets=True)
+                (common, T), (common_ents, T_ents) = get_common_things_between_two_langs(l1, l2, entities_to_use=[e], joint_all_sets=True)
                 C = common
                 if l1 in dic and l2 in dic[l1]:
                     assert dic[l1][l2] == C, f"BAD {C} {dic[l1][l2]}, {l1}"
                 dic[l1][l2] = C
-                (common, T), (common_ents, T_ents) = get_common_things_between_two_langs(l1, l2, mode=mode, joint_all_sets=True)
+                (common, T), (common_ents, T_ents) = get_common_things_between_two_langs(l1, l2, joint_all_sets=True)
                 dic_overall[l1][l2] = common
         df = pd.DataFrame(dic)
         df = order_columns_of_df(order_columns_of_df(df), rows=True)

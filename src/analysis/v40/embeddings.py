@@ -364,7 +364,7 @@ def analyse_data(
             labels = cats
         plt.legend(handles, labels, framealpha=0.4, ncol = 1 + legend)
         plt.title(f'{pretty_name} ({mode.upper()})')
-        plt.savefig(os.path.join(dir_path, name + "_" + mode + ".png")); 
+        savefig(os.path.join(dir_path, name + "_" + mode + ".png")); 
         plt.close()
     
     def do_distance_table(embeddings_dictionaries: List[EmbeddingDictionary],
@@ -531,7 +531,7 @@ def analyse_data(
             for i in range(len(all_ms)):
                 models = all_ms[i]
                 n = 'base_then_finetune' if i == 0 else 'lang_adap'
-                pn = 'Base fine-tuned on' if i == 0 else 'Language Adaptive {F} fine-tuned on'
+                pn = 'Base fine-tuned on' if i == 0 else f'Language Adaptive ({model}) fine-tuned on'
                 Ls = ORDER()
                 for l in Ls:
                     for mode in  mode_array:

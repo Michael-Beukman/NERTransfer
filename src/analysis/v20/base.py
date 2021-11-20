@@ -124,19 +124,13 @@ def main(mode='all', ax=None, save=True, start = 0, end = 3, name_to_save=None, 
         df2['avg'] = df2.mean(axis=1)
 
         # And this plots the heatmap
-        cbar = False if mode == 'all' else save
-        if save and mode != 'all':
-            cbar_ax = fig.add_axes([1.01, 0.11, .01, 0.67])
-            cbar_ax.set_xticks([])
-            cbar_ax.set_yticks([])
         sns.heatmap(df2.round(1), 
                     annot=True, 
                     vmin=0, vmax = 100 * (1 - do_std) + do_std * 8, 
                     fmt=".2g", 
                     ax=ax, 
-                    **({} if mode == 'all' else {'cbar_ax': cbar_ax if save  else None}),
                     **({'mask':1-np.eye(len(df2))} if use_diag_mask else {}),
-                    square=True, cbar=cbar)
+                    square=True, cbar=False)
         if mode == 'all' or (name_to_save == '_joint' and mode == 'DATE'):
             ax.set_ylabel(f"Evaluated on")
         xlabel = "Fine-tuned on"
@@ -171,7 +165,7 @@ def main(mode='all', ax=None, save=True, start = 0, end = 3, name_to_save=None, 
                 if n1 == 'base' or n2 != 'base': continue
                 fig, ax = plt.subplots(1, 1, figsize=figsize) 
                 d1, d2 = all_df_2s[i], all_df_2s[j]
-                sns.heatmap((d1 - d2).round(), annot=True, vmin=-31, vmax=47, ax=ax, square=True, cbar=cbar)
+                sns.heatmap((d1 - d2).round(), annot=True, vmin=-31, vmax=47, ax=ax, square=True, cbar=False)
                 # plt.title(f"Results: {n1} - {n2}{NN2}")
                 letter = ''
                 if n1 == 'x-swa-y': letter = '(c)'
