@@ -58,7 +58,24 @@ In general, these models performed worse on the 'date' category compared to othe
 ## Model Structure
 Here are some details regarding the specific models, like where to find them, what the starting points where and what they were evaluated on. Evaluation here is also the same language that the model was fine-tuned on.
 All of these metrics were calculated on the test set, and the seed was chosen that gave the best overall F1 score. The first three result columns are averaged over all categories, and the latter 4 provide performance broken down by category.
-| Model Name                                         | Staring point        | Evaluation Language  | F1 | Precision | Recall | F1 (DATE) | F1 (LOC) | F1 (ORG) | F1 (PER) |
+
+These models can predict the following label for a token ([source](https://huggingface.co/Davlan/xlm-roberta-large-masakhaner)):
+
+
+Abbreviation|Description
+-|-
+O|Outside of a named entity
+B-DATE |Beginning of a DATE entity right after another DATE entity
+I-DATE |DATE entity
+B-PER |Beginning of a person’s name right after another person’s name
+I-PER |Person’s name
+B-ORG |Beginning of an organisation right after another organisation
+I-ORG |Organisation
+B-LOC |Beginning of a location right after another location
+I-LOC |Location
+
+
+| Model Name                                         | Staring point        | Evaluation / Fine-tune Language  | F1 | Precision | Recall | F1 (DATE) | F1 (LOC) | F1 (ORG) | F1 (PER) |
 | -------------------------------------------------- | -------------------- | -------------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
 | [xlm-roberta-base-finetuned-hausa-finetuned-ner-hausa](https://huggingface.co/mbeukman/xlm-roberta-base-finetuned-hausa-finetuned-ner-hausa) | [hau](https://huggingface.co/Davlan/xlm-roberta-base-finetuned-hausa) | hau                  | 92.27          | 90.46          | 94.16          | 85.00          | 95.00          | 80.00          | 97.00          |
 | [xlm-roberta-base-finetuned-swahili-finetuned-ner-hausa](https://huggingface.co/mbeukman/xlm-roberta-base-finetuned-swahili-finetuned-ner-hausa) | [swa](https://huggingface.co/Davlan/xlm-roberta-base-finetuned-swahili) | hau                  | 89.14          | 87.18          | 91.20          | 82.00          | 93.00          | 76.00          | 93.00          |
