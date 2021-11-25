@@ -48,7 +48,7 @@ No explicit ethical considerations or adjustments were made during fine-tuning o
 ## Metrics
 As shown in our report, and in the MasakhaNER paper, the language adaptive models achieve (mostly) superior performance over starting with xlm-roberta-base. We also demonstrated some better transfer capabilities for some of these models. Our main metric was the aggregate F1 score for all NER categories.
 
-These metrics are on the test set for MasakhaNER, so the data distribution is similar to the training set, so these results do not directly indicate how well models generalise.
+These metrics are on the test set for MasakhaNER, so the data distribution is similar to the training set, so these results do not directly indicate how well these models generalise.
 We do find large variation in results when starting from different seeds (5 different seeds were tested), indicating that the fine-tuning process for transfer might be unstable.
 
 The metrics used were chosen to be consistent with previous work, and to facilitate research. Other metrics may be more appropriate for other purposes.
@@ -113,7 +113,7 @@ I-LOC |Location
 | [xlm-roberta-base-finetuned-ner-yoruba](https://huggingface.co/mbeukman/xlm-roberta-base-finetuned-ner-yoruba) | [base](https://huggingface.co/xlm-roberta-base) | yor                  | 78.22          | 77.21          | 79.26          | 77.00          | 80.00          | 71.00          | 82.00          |
 
 ## Usage
-To use these models, you can do the following, with just changing the model name ([source](https://huggingface.co/dslim/bert-base-NER)):
+To use these models, you can do the following, just changing the model name ([source](https://huggingface.co/dslim/bert-base-NER)):
 
 ```
 from transformers import AutoTokenizer, AutoModelForTokenClassification
