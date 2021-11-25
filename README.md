@@ -22,7 +22,7 @@
   - [Model Structure](#model-structure)
   - [Usage](#usage)
 # About
-This is an Honours course project that investigates transfer learning in low-resourced languages, specifically in a named entity recognition (NER) task. This repository contains the code, the trained models can be found [here](https://huggingface.co/mbeukman) and the report can be found here (still in progress).
+This is an Honours course project that investigates transfer learning in low-resourced languages, specifically in a named entity recognition (NER) task. This repository contains the code, the trained models can be found [here](https://huggingface.co/mbeukman) and the report can be found here (will be added after submission deadline).
 
 # Code Structure
 We mainly did the following in this project:
