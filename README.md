@@ -8,6 +8,7 @@
   - [Analysis](#analysis)
   - [Exploration](#exploration)
 - [References / Sources / Libraries](#references--sources--libraries)
+- [License](#license)
 - [Model Cards](#model-cards)
   - [About](#about-1)
     - [Contact & More information](#contact--more-information)
@@ -125,9 +126,11 @@ The folder names might be slightly confusing, but, e.g. `src/runs/v10/models/kin
 
 For the results in `v20`, e.g. `src/runs/v10/models/v20/lug_zero_shot_pcm_v10_start_swa__pcm__0_50_lug_50` is fundamentally the `pcm_v10_start_swa__pcm__0_50` model (i.e. Swahili pre-trained and fine-tuned on Nigerian Pidgin) that was used to evaluate Luganda. Hence, these files follow the format `src/runs/v10/models/v20/<eval>_zero_shot_<model>_<eval>_50`.
 # References / Sources / Libraries
-- MasakhaNER ([Github](https://github.com/masakhane-io/masakhane-ner), [paper](https://arxiv.org/abs/2103.11811)). Their code and data can be found in `data/`, and is licensed under `Masakhane-LIC`
+- MasakhaNER ([Github](https://github.com/masakhane-io/masakhane-ner), [paper](https://arxiv.org/abs/2103.11811)). Their code and data can be found in `data/`, and is licensed under `Masakhane-LICENSE`
 - Interspersed throughout the code are links to other sources that were used to solve a particular problem.
 
+# License
+This code is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 # Model Cards
 We release some models that were fine-tuned on the [MasakhaNER](https://arxiv.org/abs/2103.11811) dataset, using specific languages. We start with 3 different pre-trained models, and then fine-tune on 9 of the languages in the dataset.
 The pre-trained models we start with are:
