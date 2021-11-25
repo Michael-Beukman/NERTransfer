@@ -125,7 +125,7 @@ The folder names might be slightly confusing, but, e.g. `src/runs/v10/models/kin
 
 For the results in `v20`, e.g. `src/runs/v10/models/v20/lug_zero_shot_pcm_v10_start_swa__pcm__0_50_lug_50` is fundamentally the `pcm_v10_start_swa__pcm__0_50` model (i.e. Swahili pre-trained and fine-tuned on Nigerian Pidgin) that was used to evaluate Luganda. Hence, these files follow the format `src/runs/v10/models/v20/<eval>_zero_shot_<model>_<eval>_50`.
 # References / Sources / Libraries
-- MasakhaNER ([Github](https://github.com/masakhane-io/masakhane-ner), [paper](https://arxiv.org/abs/2103.11811)). Their code and data can be found in `data/`, and is licensed under `Masakhane-LICENSE`
+- MasakhaNER ([Github](https://github.com/masakhane-io/masakhane-ner), [paper](https://arxiv.org/abs/2103.11811)). Their code and data can be found in `data/`, and is licensed under `Masakhane-LIC`
 - Interspersed throughout the code are links to other sources that were used to solve a particular problem.
 
 # Model Cards
