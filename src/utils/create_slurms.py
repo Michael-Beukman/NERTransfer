@@ -5,8 +5,8 @@
 
 import os
 
-langs =     ['yor',     'hau',  'kin',                   'lug',      'pcm',    'wol',   'swa',     'ibo',  'luo']
-fullnames = ['yoruba', 'hausa', 'kinyarwanda',           'luganda',  'naija',  'wolof', 'swahili', 'igbo', 'luo']
+langs =     ['yor',     'hau',  'kin',                   'lug',      'pcm',    'wol',   'swa',     'ibo',  'luo', 'amh']
+fullnames = ['yoruba', 'hausa', 'kinyarwanda',           'luganda',  'naija',  'wolof', 'swahili', 'igbo', 'luo', 'amharic']
 
 # Change this path
 ROOT_PATH = '/home/USERNAME/path/to/root'

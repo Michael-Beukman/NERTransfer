@@ -201,8 +201,8 @@ def main(layers=None, I = 0 ):
     """
     os.makedirs('analysis/v40', exist_ok=True)
     os.makedirs('results/v40', exist_ok=True)
-    langs =     ['yor',     'hau',  'kin',                   'lug',      'pcm',    'wol',   'swa',     'ibo',  'luo']
-    fullnames = ['yoruba', 'hausa', 'kinyarwanda',           'luganda',  'naija',  'wolof', 'swahili', 'igbo', 'luo']    
+    langs =     ['yor',     'hau',  'kin',                   'lug',      'pcm',    'wol',   'swa',     'ibo',  'luo', 'amh']
+    fullnames = ['yoruba', 'hausa', 'kinyarwanda',           'luganda',  'naija',  'wolof', 'swahili', 'igbo', 'luo', 'amharic']    
     # Models
     if I == 0:
         models = {'base': 'xlm-roberta-base'}

@@ -1,3 +1,6 @@
+import matplotlib
+matplotlib.rcParams['pdf.fonttype'] = 42
+matplotlib.rcParams['ps.fonttype'] = 42
 from matplotlib import pyplot as plt
 import pandas as pd
 try:
@@ -10,7 +13,7 @@ import bz2
 
 # Returns languages
 def ORDER():
-    return [ 'wol', 'pcm', 'yor', 'hau', 'ibo', 'luo', 'lug', 'kin', 'swa']
+    return [ 'wol', 'pcm', 'yor', 'hau', 'ibo', 'luo', 'lug', 'kin', 'swa', 'amh']
 
 def LANGS(): return ORDER()
 
@@ -41,6 +44,7 @@ def FAMILIES(): return {
     
     'ibo': 'Niger­Congo­Volta­Niger',
     'yor': 'Niger­Congo­Volta­Niger',
+    'amh': 'Afro­Asiatic­Ethio­Semitic'
 }
 
 def FULLNAMES(): return {
@@ -53,7 +57,8 @@ def FULLNAMES(): return {
     'swa': 'Swahili',  
     'ibo': 'Igbo', 
     'luo': 'Luo',
-    'base': "Base"
+    'amh': "Amharic",
+    'base': "Base",
 }
 def order_columns_of_df(df: pd.DataFrame, rows=False, both=False):
     """Orders the df columns (or rows) based on the above order, for consistent tables + heatmaps.
@@ -94,4 +99,8 @@ def load_compressed_pickle(file):
 
 def savefig(name, pad=0.1):
     # consistent saving
-    plt.savefig(name, bbox_inches='tight', pad_inches=pad)
+    plt.savefig(name, bbox_inches='tight', pad_inches=pad, dpi=400)
+    
+    # Save pdf file too
+    name = name.split(".png")[0] + ".pdf"
+    plt.savefig(name, bbox_inches='tight', pad_inches=pad, dpi=400)
