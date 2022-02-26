@@ -1,11 +1,11 @@
-,yor Evaled on,amh Evaled on,ibo Evaled on,luo Evaled on,kin Evaled on,swa Evaled on,lug Evaled on,hau Evaled on,wol Evaled on,pcm Evaled on
-amh (NER finetune lang),40.0,72.2,26.8,23.8,39.2,57.4,34.0,63.2,18.0,64.8
-ibo (NER finetune lang),64.6,33.4,85.4,35.8,49.4,73.4,55.8,71.8,51.4,71.2
-yor (NER finetune lang),81.0,22.2,35.0,35.6,54.4,61.0,59.4,70.6,36.6,71.4
-wol (NER finetune lang),45.2,9.0,39.2,28.0,54.2,57.8,49.6,64.8,82.4,56.6
-lug (NER finetune lang),51.0,17.8,30.0,35.4,56.0,63.0,78.6,71.2,39.6,70.0
-swa (NER finetune lang),48.0,22.0,26.0,27.8,53.6,92.4,52.8,77.6,10.8,71.6
-hau (NER finetune lang),58.2,22.0,36.0,32.8,55.6,72.2,58.8,92.2,39.8,68.4
-luo (NER finetune lang),53.8,5.8,41.6,80.6,45.6,35.6,55.8,52.2,57.4,60.4
-kin (NER finetune lang),53.0,8.8,33.2,30.6,75.6,64.2,63.4,70.6,45.8,67.6
-pcm (NER finetune lang),45.8,23.2,27.2,32.2,55.4,71.8,54.6,77.8,16.2,87.6
+,yor Evaled on,pcm Evaled on,wol Evaled on,lug Evaled on,amh Evaled on,ibo Evaled on,luo Evaled on,kin Evaled on,swa Evaled on,hau Evaled on
+lug (NER finetune lang),51.0,70.0,39.6,78.6,17.8,30.0,35.4,56.0,63.0,71.2
+yor (NER finetune lang),81.0,71.4,36.6,59.4,22.2,35.0,35.6,54.4,61.0,70.6
+luo (NER finetune lang),53.8,60.4,57.4,55.8,5.8,41.6,80.6,45.6,35.6,52.2
+swa (NER finetune lang),48.0,71.6,10.8,52.8,22.0,26.0,27.8,53.6,92.4,77.6
+ibo (NER finetune lang),64.6,71.2,51.4,55.8,33.4,85.4,35.8,49.4,73.4,71.8
+amh (NER finetune lang),40.0,64.8,18.0,34.0,72.2,26.8,23.8,39.2,57.4,63.2
+wol (NER finetune lang),45.2,56.6,82.4,49.6,9.0,39.2,28.0,54.2,57.8,64.8
+hau (NER finetune lang),58.2,68.4,39.8,58.8,22.0,36.0,32.8,55.6,72.2,92.2
+kin (NER finetune lang),53.0,67.6,45.8,63.4,8.8,33.2,30.6,75.6,64.2,70.6
+pcm (NER finetune lang),45.8,87.6,16.2,54.6,23.2,27.2,32.2,55.4,71.8,77.8
