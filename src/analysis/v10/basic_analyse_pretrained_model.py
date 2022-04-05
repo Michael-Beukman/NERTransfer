@@ -23,12 +23,24 @@ def do_pretty_latex(dic: Dict[str, Dict[str, List[float]]], save_name='../analys
         dic (Dict[str, Dict[str, List[float]]]): [description]
         save_name (str, optional): [description]. Defaults to '../analysis/v10/results.tex'.
     """
-    keys = list(dic.keys())
-    langs = list(dic[keys[0]].keys())
     dic_to_print = defaultdict(lambda: dict())
+    names = [
+        'Pre-trained (same-language)', 'Pre-trained (base)', 'Pre-trained (swa)'
+    ]
+    replace = [
+        r'$\text{base} \to X$',
+        r'$\text{base}$',
+        r'$\text{base} \to \text{swa}$'
+    ]
+    for n, r in zip(names, replace):
+        # break
+        dic[r] = dic[n]
+        del dic[n]
+    keys = sorted(list(dic.keys()))
+    langs = list(dic[keys[0]].keys())
     for l in langs:
         alls = [np.mean(dic[XX][l]) for XX in keys]
-        base_val = dic['Pre-trained (base)'][l]
+        base_val = dic[replace[1]][l]
         for pretrained in keys:
             this_val = dic[pretrained][l]
             _, p = mannwhitneyu(this_val, base_val)
@@ -40,6 +52,7 @@ def do_pretty_latex(dic: Dict[str, Dict[str, List[float]]], save_name='../analys
             dic_to_print[pretrained][l] = prett
     df = pd.DataFrame(dic_to_print).T
     df = order_columns_of_df(df)
+    df.index.name = 'Starting point for NER fine-tune'
     df.to_latex(save_name, escape=False)    
 
 
@@ -55,9 +68,17 @@ def main():
     dic = defaultdict(lambda: defaultdict(lambda: []))
     for path in folders:
         f = path.split("/")[-1]
-        lang_finetune, _, _, lang_start, _, _, _, seed, _ = f.split("_")
+        KK = os.path.join(path, 'test_results.txt')
+        if not os.path.exists(KK): 
+            print(f, 'does not exist')
+            continue
+        try:
+            lang_finetune, _, _, lang_start, _, _, _, seed, _ = f.split("_")
+        except Exception as e:
+            print(f, e)
+            continue
 
-        with open(os.path.join(path, 'test_results.txt'), 'r') as f:
+        with open(KK, 'r') as f:
             f1 = float(f.readlines()[0].strip().split(" = ")[1])
         print(f"Lang {lang_finetune} with starting on {lang_start} Got F1 = {f1}")
         dic[lang_start][lang_finetune].append(f1)

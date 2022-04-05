@@ -72,6 +72,10 @@ def main(mode='all', ax=None, save=True, start = 0, end = 3, name_to_save=None, 
     for path in folders:
         if 'Icon' in path: continue
         f = path.split("/")[-1]
+        KK = os.path.join(path, 'test_results.txt')
+        if not os.path.exists(KK): 
+            print(f, 'does not exist')
+            continue
         lang_evaled_on = f.split("_")[0]
         startpoint = f.split("_zero_shot_")[1].split(f"_{lang_evaled_on}_50")[0]
         pretrained_model = startpoint.split('start_')[1].split("__")[0]
@@ -130,7 +134,7 @@ def main(mode='all', ax=None, save=True, start = 0, end = 3, name_to_save=None, 
                     fmt=".2g", 
                     ax=ax, 
                     **({'mask':1-np.eye(len(df2))} if use_diag_mask else {}),
-                    square=True, cbar=False)
+                    square=True, cbar=False, cmap="YlGnBu")
         if mode == 'all' or (name_to_save == '_joint' and mode == 'DATE'):
             ax.set_ylabel(f"Evaluated on")
         xlabel = "Fine-tuned on"
@@ -142,17 +146,18 @@ def main(mode='all', ax=None, save=True, start = 0, end = 3, name_to_save=None, 
         # Some different options and titles based on what exactly is selected.
         if mode != 'all': NN2_tmp = ''
         if pretrained_model == 'lang-specific':
-            func(f"Pre-trained model = Same as NER fine-tune one{NN2_tmp}")
+            func(f"Adaptive & NER fine-tuned on the same language{NN2_tmp}")
+            xlabel = r'Language-adaptive and NER fine-tune language'
         elif pretrained_model == 'x-swa-y':
-            func(f"Pre-trained model = X-axis. Fine-tune on Swa{NN2_tmp}")
-            xlabel = "Pretrained model. Always finetuned NER on SWA"
+            func(f"Adaptive (X-axis) & Fine-tuned on SWA NER{NN2_tmp}")
+            xlabel = "Adaptive language. Always fine-tuned on SWA NER"
         else:
             func(f"Pre-trained model = {pretrained_model}{NN2_tmp}")
         if mode == 'all' or name_to_save == '_joint':
             ax.set_xlabel(xlabel)
         if save:
             plt.tight_layout()
-            savefig(f"../analysis/v20/results_{pretrained_model}{NN}{'masked' if use_diag_mask else ''}.png")
+            savefig(f"../analysis/v20/results_{pretrained_model}{NN}{'masked' if use_diag_mask else ''}.png", pad=0)
             plt.close()
         df.T.to_csv(f'../analysis/v20/results_{pretrained_model}{NN}.csv')
 
@@ -165,18 +170,18 @@ def main(mode='all', ax=None, save=True, start = 0, end = 3, name_to_save=None, 
                 if n1 == 'base' or n2 != 'base': continue
                 fig, ax = plt.subplots(1, 1, figsize=figsize) 
                 d1, d2 = all_df_2s[i], all_df_2s[j]
-                sns.heatmap((d1 - d2).round(), annot=True, vmin=-31, vmax=47, ax=ax, square=True, cbar=False)
+                sns.heatmap((d1 - d2).round(), annot=True, vmin=-31, vmax=47, ax=ax, square=True, cbar=False, cmap="YlGnBu")
                 # plt.title(f"Results: {n1} - {n2}{NN2}")
                 letter = ''
                 if n1 == 'x-swa-y': letter = '(c)'
                 if n1 == 'lang-specific': letter = '(b)'
-                if n1 == 'swa': letter = 'Swahili Pre-trained Model'
+                if n1 == 'swa': letter = 'Swahili-adaptive Model'
                 
                 plt.title(f"Results: {letter} - (a){NN2}")
                 plt.ylabel("Evaluated on")
                 plt.xlabel("Fine-tuned on")
                 plt.tight_layout()
-                savefig(f"../analysis/v20/results_{n1}_{n2}{NN}.png")
+                savefig(f"../analysis/v20/results_{n1}_{n2}{NN}.png", pad=0)
                 plt.close()
 
     print("AT END")

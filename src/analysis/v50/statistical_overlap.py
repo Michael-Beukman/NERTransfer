@@ -7,8 +7,10 @@ import numpy as np
 import pandas as pd
 from analysis.utils import ORDER, order_columns_of_df, savefig
 import seaborn as sns
+sns.set_theme()
 from scipy.stats import pearsonr, linregress
 save_dir = '../analysis/v50'
+fsize = 20
 
 def get_common_things_between_two_langs(lang1:str, lang2:str,
                                         entities_to_use=['DATE', 'PER', 'LOC', 'ORG'], joint_all_sets=False):
@@ -100,14 +102,14 @@ def statistical_overlap(mode='train'):
         df = pd.DataFrame(dic)
         df = order_columns_of_df(order_columns_of_df(df), rows=True)
         df.to_csv(os.path.join(save_dir, "data_" + e + ".csv"))
-        sns.heatmap(df, annot=True, ax=ax, fmt='.0f')
+        sns.heatmap(df, annot=True, ax=ax, fmt='.0f', cmap="YlGnBu")
         ax.set_title(e)
     plt.suptitle("Data Overlap")
     savefig(os.path.join(save_dir, "data_joint.png"))
     plt.close()
     df = pd.DataFrame(dic_overall)
-    plt.figure(figsize=((15 + 2.5) / 1.4, 15 / 1.4))
-    sns.heatmap(df, annot=True); plt.title("Data overlap for all Categories")
+    plt.figure(figsize=((11 * 7/6), 11))
+    sns.heatmap(df, annot=True, cmap="YlGnBu"); plt.title("Data overlap for all Categories",fontsize=fsize)
     savefig(os.path.join(save_dir, "data_all.png"))
     df.to_csv(os.path.join(save_dir, "data_all.csv"))
             
@@ -133,13 +135,13 @@ def investigate_performance():
     all_data        = df_data.to_numpy().flatten()[mask]
     all_performance = df_performance.to_numpy().flatten()[mask]
 
-    plt.figure(figsize=(15, 15))
+    plt.figure(figsize=(10, 10))
     ans = linregress(all_data, all_performance)
     plt.scatter(all_data, all_performance)
     xs = np.linspace(all_data.min(), all_data.max())
     plt.plot(xs, xs * ans.slope + ans.intercept)
-    
-    plt.title(f"Comparing F1 vs. Data overlap\nStarting from base and fine-tuning on one language, evaluating on another.\nR={np.round(ans.rvalue, 2)}, p={ans.pvalue:1.1e}")
+    plt.title(f"Comparing F1 vs. Data overlap",fontsize=fsize);
+    print(f"\nBase model fine-tuned on one language, evaluating on another.\nR={np.round(ans.rvalue, 2)}, p={ans.pvalue:1.1e}")
     plt.xlabel("Data Amount Overlapping (Tokens)")
     plt.ylabel("F1")
     savefig(os.path.join(save_dir, 'correlation_base.png'))

@@ -22,7 +22,7 @@ def write_finetune_slurm(
 #SBATCH -N 1
 #SBATCH -t 24:00:00
 #SBATCH -J {LANG}_{NAME}_{MODEL}
-#SBATCH -o {ROOT_PATH}/{SLURMLOC}/{LANG}_{NAME}_{CLEANMODEL}.%N.%j.out
+#SBATCH -o {ROOT_PATH}/src/{SLURMLOC}/logs/{LANG}_{NAME}_{CLEANMODEL}.%N.%j.out
 
 source ~/.bashrc
 cd {ROOT_PATH}/src/runs/v10
@@ -31,7 +31,7 @@ echo "Using {MODEL} for {LANG}, with name = {NAME} and seed = {SEED}"
 time ./train.sh {NAME} {MODEL} {LANG} {SEED}
 """
     clean_model = pretrained_model.replace("/","_")
-
+    
     for l, full in zip(langs, fullnames):
         if l in clean_model or full in clean_model:
             clean_model = l

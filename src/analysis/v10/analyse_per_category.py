@@ -25,6 +25,10 @@ def main():
     
     for path in folders:
         f = path.split("/")[-1]
+        KK = os.path.join(path, 'test_results.txt')
+        if not os.path.exists(KK): 
+            print(f, 'does not exist')
+            continue
         # Split the paths
         lang_finetune, _, _, lang_start, _, _, _, seed, _ = f.split("_")
 
