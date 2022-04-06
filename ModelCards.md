@@ -1,5 +1,5 @@
 # Model Cards
-We release some models that were fine-tuned on the [MasakhaNER](https://arxiv.org/abs/2103.11811) dataset, using specific languages. We start with 3 different pre-trained models, and then fine-tune on 9 of the languages in the dataset.
+We release some models that were fine-tuned on the [MasakhaNER](https://arxiv.org/abs/2103.11811) dataset, using specific languages. We start with 3 different pre-trained models, and then fine-tune on the 10 languages in the dataset.
 The pre-trained models we start with are:
 - [xlm-roberta-base](https://huggingface.co/xlm-roberta-base)
 - [xlm-roberta-base-finetuned-swahili](https://huggingface.co/Davlan/xlm-roberta-base-finetuned-swahili) -> Domain adaptive fine-tuning on a large, unlabelled monolingual corpus.
