@@ -1,6 +1,12 @@
 # NER Transfer - Interpretation and Analysis
+# About
+This is an project that investigates transfer learning in low-resourced languages, specifically in a named entity recognition (NER) task. This repository contains the code, the trained models can be found [here](https://huggingface.co/mbeukman) and the report can be found [here](https://github.com/Michael-Beukman/NERTransfer/blob/main/doc/report.pdf).
+
+Further, many visualisations are available in [./analysis/](https://github.com/Michael-Beukman/NERTransfer/tree/main/analysis). Finally, the raw predictions and results can be found in [./src/runs/v10/models/](https://github.com/Michael-Beukman/NERTransfer/tree/main/src/runs/v10/models)
+# Contents
 - [NER Transfer - Interpretation and Analysis](#ner-transfer---interpretation-and-analysis)
 - [About](#about)
+- [Contents](#contents)
 - [Code Structure](#code-structure)
 - [Get Started](#get-started)
   - [Train Models](#train-models)
@@ -21,8 +27,6 @@
   - [Caveats and Recommendations](#caveats-and-recommendations)
   - [Model Structure](#model-structure)
   - [Usage](#usage)
-# About
-This is an Honours course project that investigates transfer learning in low-resourced languages, specifically in a named entity recognition (NER) task. This repository contains the code, the trained models can be found [here](https://huggingface.co/mbeukman) and the report can be found [here](https://github.com/Michael-Beukman/NERTransfer/blob/main/doc/report.pdf).
 
 # Code Structure
 We mainly did the following in this project:
