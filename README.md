@@ -1,6 +1,6 @@
 # NER Transfer - Interpretation and Analysis
 # About
-This is an project that investigates transfer learning in low-resourced languages, specifically in a named entity recognition (NER) task. This repository contains the code, the trained models can be found [here](https://huggingface.co/mbeukman) and the report can be found [here](https://github.com/Michael-Beukman/NERTransfer/blob/main/doc/report.pdf).
+This is an project that investigates transfer learning in low-resourced languages, specifically in a named entity recognition (NER) task. This repository contains the code, the trained models can be found [here](https://huggingface.co/mbeukman) and the paper (accepted to the AfricaNLP Workshop 2022) can be found [here](https://openreview.net/forum?id=HKWMFqfN8b5).
 
 Further, many visualisations are available in [./analysis/](https://github.com/Michael-Beukman/NERTransfer/tree/main/analysis). Finally, the raw predictions and results can be found in [./src/runs/v10/models/](https://github.com/Michael-Beukman/NERTransfer/tree/main/src/runs/v10/models)
 # Contents
@@ -15,6 +15,7 @@ Further, many visualisations are available in [./analysis/](https://github.com/M
   - [Exploration](#exploration)
 - [References / Sources / Libraries](#references--sources--libraries)
 - [License](#license)
+- [Citation](#citation)
 - [Model Cards](#model-cards)
   - [About](#about-1)
     - [Contact & More information](#contact--more-information)
@@ -135,6 +136,17 @@ For the results in `v20`, e.g. `src/runs/v10/models/v20/lug_zero_shot_pcm_v10_st
 
 # License
 This code is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+# Citation
+If you find this useful, then please cite this work as follows:
+```
+@inproceedings{NerTransfer,
+  title={Analysing the effects of transfer learning on low-resourced named entity recognition performance},
+  author={Michael Beukman},
+  booktitle={3rd Workshop on African Natural Language Processing},
+  year={2021},
+  url={https://openreview.net/forum?id=HKWMFqfN8b5}
+}
+```
 # Model Cards
 We release some models that were fine-tuned on the [MasakhaNER](https://arxiv.org/abs/2103.11811) dataset, using specific languages. We start with 3 different pre-trained models, and then fine-tune on the 10 languages in the dataset.
 The pre-trained models we start with are:
