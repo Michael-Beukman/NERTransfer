@@ -1,6 +1,6 @@
 # NER Transfer - Interpretation and Analysis
 # About
-This is an project that investigates transfer learning in low-resourced languages, specifically in a named entity recognition (NER) task. This repository contains the code, the trained models can be found [here](https://huggingface.co/mbeukman) and the paper (accepted to the AfricaNLP Workshop 2022) can be found [here](https://openreview.net/forum?id=HKWMFqfN8b5).
+This is an project that investigates transfer learning in low-resourced languages, specifically in a named entity recognition (NER) task. This repository contains the code, the trained models can be found [here](https://huggingface.co/mbeukman) and the paper (accepted to IJCNLP-AACL 2023) can be found [here](https://arxiv.org/abs/2309.05311).
 
 Further, many visualisations are available in [./analysis/](https://github.com/Michael-Beukman/NERTransfer/tree/main/analysis). Finally, the raw predictions and results can be found in [./src/runs/v10/models/](https://github.com/Michael-Beukman/NERTransfer/tree/main/src/runs/v10/models)
 # Contents
